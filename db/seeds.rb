@@ -4,18 +4,18 @@ Writer.delete_all
 Webtoon.delete_all
 
 #readers
-r1 = Reader.create(name: "Josh", age: 27)
-r2 = Reader.create(name: "Jessica", age: 30)
-r3 = Reader.create(name: "Sonia:", age: 27)
-r4 = Reader.create(name: "Kevin", age: 45)
-r5 = Reader.create(name: "James", age: 19)
+r1 = Reader.create(name: "Josh Kim", age: 27)
+r2 = Reader.create(name: "Jessica Kim", age: 30)
+r3 = Reader.create(name: "Sonia Yoon", age: 27)
+r4 = Reader.create(name: "Kevin Kim", age: 45)
+r5 = Reader.create(name: "James Kim", age: 19)
 
 #writers
-w1 = Writer.create(name: "Kevlin", years_of_experience: 4)
-w2 = Writer.create(name: "Wonjae", years_of_experience: 5)
-w3 = Writer.create(name: "Mira", years_of_experience: 1)
-w4 = Writer.create(name: "Alexis", years_of_experience: 3)
-w5 = Writer.create(name: "Jack", years_of_experience: 6)
+w1 = Writer.create(name: "Kelvin Moon", years_of_experience: 4)
+w2 = Writer.create(name: "Wonjae Jang", years_of_experience: 5)
+w3 = Writer.create(name: "Mira Mirror", years_of_experience: 1)
+w4 = Writer.create(name: "Alexis Trevor", years_of_experience: 3)
+w5 = Writer.create(name: "Jack Nickel", years_of_experience: 6)
 
 #webtoons
 Webtoon.create(title: "Baseball", writer_id: w1.id,reader_id: r1.id, release_day: "Monday")
