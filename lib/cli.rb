@@ -1,16 +1,13 @@
 class CommandLineInterface
 
     def greet
-        puts "Hello and welcome to the world of Webtoons!"
+        puts "Hello and welcome to the World of Webtoons!"
     end
 
     def run
         self.greet
-        puts "Please let us know if you are joining us today as a 
-        1. returning writer
-        2. returning reader
-        3. new writer
-        4. new reader"
+        title_break
+        puts "Please let us know if you are joining us today as a", "1. returning writer", "2. returning reader", "3. new writer", "4. new reader"
         print "Please enter the corresponding number: "
         while input = gets.chomp.downcase
             break if input == "exit"
@@ -37,6 +34,7 @@ class CommandLineInterface
 
     #returning writer
     def ret_writer_start
+        title_break
         puts "Hello Writer! Please tell us your name so we can assist you accordingly!"
         print "Please enter your name: "
         writer_input = gets.chomp.titleize
@@ -51,12 +49,9 @@ class CommandLineInterface
 
     #writer main menu
     def writer_options(writer_input)
-        print "Please select from the options listed 
-        1) Find all my Webtoons 
-        2) Add a new Webtoon 
-        3) Delete a Webtoon 
-        4) Update release day of my Webtoon
-        : "
+        line_break
+        puts "Please select from the options listed", "1) Find all my Webtoons", "2) Add a new Webtoon", "3) Delete a Webtoon", "4) Update release day of my Webtoon"
+        print "Please select the corresponding number: "
         while input = gets.chomp.downcase
             break if input == "exit"
             case input
@@ -70,7 +65,7 @@ class CommandLineInterface
                 self.writer_del_webtoon(writer_input)
                 break
             when "4"
-                puts "New day"
+                self.writer_day_webtoon(writer_input)
                 break
             else
                 puts "Please double check you entered the correct # or enter 'exit' to leave the app."
@@ -80,7 +75,7 @@ class CommandLineInterface
 
     #writer option 1
     def writer_webtoons(writer_input)
-        # binding.pry
+        line_break
         x = Writer.find_by(name: writer_input)
         x.webtoons.each do |y|
             y.title
@@ -92,10 +87,11 @@ class CommandLineInterface
     
     #writer option 2
     def writer_new_webtoon(writer_input)
+        line_break
         puts "Congratulations on a new Webtoon. Could you please provide the title and release day of the Webtoon?"
-        print "title: "
+        print "Title: "
         title_input = gets.chomp.downcase
-        print "release day: "
+        print "Release Day: "
         release_input = gets.chomp.downcase
         x = Writer.find_by(name: writer_input)
         # binding.pry
@@ -106,6 +102,7 @@ class CommandLineInterface
 
     #writer option 3
     def writer_del_webtoon(writer_input)
+        line_break
         puts "Could you please advise which Webtoon you will no longer write?"
         print "Title: "
         title_input = gets.chomp.downcase
@@ -117,10 +114,11 @@ class CommandLineInterface
 
     #writer option 4
     def writer_day_webtoon(writer_input)
+        line_break
         puts "Could you please advise which Webtoon you would like to update the release day for and the new release day?"
         puts "Title: "
         title_input = gets.chomp.downcase
-        puts "Release Day: "
+        puts "Release Day(Monday-Saturday): "
         day_input = gets.chomp.downcase
         x = Webtoon.find_by(title: title_input)
         x.update(release_day: day_input)
@@ -130,14 +128,15 @@ class CommandLineInterface
 
     #new writer
     def new_writer_start
+        title_break
         puts "Hello Writer! Please tell us your name and years of experience so we can create a profile for you."
         print "Name: "
         name_input = gets.chomp.titleize
         print "Years of Experience: "
         yoe_input = gets.chomp.to_i
         Writer.create(name: name_input, years_of_experience: yoe_input)
-        puts "Congratulations on joining our Webtoon Writer family!"
-        writer_options(name_input)
+        puts "Congratulations #{name_input} on joining our Webtoon Writer family!"
+        writer_options(writer_input)
     end
 
 
@@ -145,6 +144,7 @@ class CommandLineInterface
 
     #returning reader
     def ret_reader_start
+        title_break
         puts "Hello Reader! Please tell us your name so we can assist you accordingly!"
         print "Please enter your name: "
         reader_input = gets.chomp.titleize
@@ -159,10 +159,9 @@ class CommandLineInterface
 
     #reader main menu
     def reader_options(reader_input)
-        print "Please select from the options listed 
-        1) Find all Webtoons I am reading 
-        2) Find the Writer of your favorite Webtoon
-        : "
+        title_break
+        puts "Please select from the options listed", "1) Find all Webtoons I am reading", "2) Find the Writer of your favorite Webtoon"
+        print "Please select the corresponding number: "
         while input = gets.chomp.downcase
             break if input == "exit"
             case input
@@ -181,6 +180,7 @@ class CommandLineInterface
     end
 
     def reader_webtoons(reader_input)
+        line_break
         x = Reader.find_by(name: reader_input)
         x.webtoons.each do |y|
             y.title
@@ -191,6 +191,7 @@ class CommandLineInterface
     end
 
     def reader_writer(reader_input)
+        line_break
         puts "Please provide the title of your favorite Webtoon!"
         print "Webtoon title: "
         title_input = gets.chomp.downcase
@@ -204,6 +205,7 @@ class CommandLineInterface
 
     #new reader
     def new_reader_start
+        title_break
         puts "Hello Reader! Please tell us your name and age so we can create a profile for you."
         puts "Name: "
         name_input = gets.chomp.titleize
@@ -214,5 +216,16 @@ class CommandLineInterface
         reader_options(name_input)
     end
 
+
+    def title_break
+        puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+        "----------------------------------------------------------------------------------",
+        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+    end
+
+    def line_break
+        puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", 
+        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+    end
 
 end
