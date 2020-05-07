@@ -22,15 +22,15 @@ Please continue to spread the word about our program!
 Below is a shoutout to our current Writers and Readers!
 
 Current List of our AWESOME Writers
-Kelvin Moon
-Wonjae Jang
-Mira Mirror
-Alexis Trevor
-Jack Nickel
+1) Kelvin Moon
+2) Wonjae Jang
+3) Mira Mirror
+4) Alexis Trevor
+5) Jack Nickel
 
 Current List of our AWESOME Readers
-Josh Kim
-Jessica Kim
-Sonia Yoon
-Kevin Kim
-James Kim
+1) Josh Kim
+2) Jessica Kim
+3) Sonia Yoon
+4) Kevin Kim
+5) James Kim
